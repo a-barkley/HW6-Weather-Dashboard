@@ -10,10 +10,25 @@
 </head>
 <body>
 
-    
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h1 class="display-4">Weather Dashboard</h1>
+            <p class="lead">Search for a city and get back accurate weather data.</p>
+            </div>
+        </div>
+    </header>
 
+    <form class="inputField">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Search for a city:</label>
+          <input type="city" class="form-control col-3" id="inputCity" placeholder="Enter city">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>
 </body>
 </html>
