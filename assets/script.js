@@ -1,6 +1,4 @@
-var availableTags = [];  
-
-var apiKey = "b9705267b2365b2bbc620b6ed43e5bcf"
+ var apiKey = "b9705267b2365b2bbc620b6ed43e5bcf"
 
 var latitude 
 var longitude
@@ -11,19 +9,11 @@ var windspeed
 var uvIndex
 
 
-// $( function() { 
-//     $("#inputCity").autocomplete({
-//       source: availableTags
-//     });
-// });
-
 function onSubmit(event) {
   event.preventDefault()
 
-  // $("inputCity").push(availableTags);
   userInput = $("#inputCity").val()
-  console.log(userInput)
-
+  
   fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + userInput + "&appid=" + apiKey)
     .then(function (response) {
       return response.json();
@@ -48,7 +38,7 @@ function onSubmit(event) {
             console.log(windspeed)
             console.log(uvIndex)
             console.log(loc)
-            
+            $("#container").addClass("card")
             $(".location").text(loc)
             $(".date").text(moment().format("[(]M[/]D[/]YYYY[)]"))
             $(".temp").text("Temperature: " + temperature)
@@ -57,11 +47,6 @@ function onSubmit(event) {
             $(".uvIndex").text("UV Index: " + uvIndex)
           })
     })
-  
-  
-  
-  
-  
 }         
 
 $(".submitBtn").click(onSubmit)
