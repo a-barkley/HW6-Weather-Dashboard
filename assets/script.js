@@ -7,13 +7,14 @@ var temperature
 var humidity
 var windspeed
 var uvIndex
+var iconID
 
 
 function onSubmit(event) {
   event.preventDefault()
 
   userInput = $("#inputCity").val()
-  
+
   fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + userInput + "&appid=" + apiKey)
     .then(function (response) {
       return response.json();
@@ -29,22 +30,27 @@ function onSubmit(event) {
          })
           .then(function (data) {
             console.log(data);
+            iconID = data.current.weather[0].icon
             temperature = data.current.temp
             humidity = data.current.humidity
             windspeed = data.current.wind_speed
             uvIndex = data.current.uvi
-            console.log(temperature)
-            console.log(humidity)
-            console.log(windspeed)
-            console.log(uvIndex)
-            console.log(loc)
-            $("#container").addClass("card")
             $(".location").text(loc)
+            $("#weatherIcon").src = "http://openweathermap.org/img/wn/" + iconID + "@2x.png"
             $(".date").text(moment().format("[(]M[/]D[/]YYYY[)]"))
-            $(".temp").text("Temperature: " + temperature)
-            $(".humidity").text("Humidity: " + humidity)
-            $(".windSpeed").text("Wind Speed: " + windspeed)
+            $(".temp").text("Temperature: " + temperature + "F")
+            $(".humidity").text("Humidity: " + humidity + "%")
+            $(".windSpeed").text("Wind Speed: " + windspeed + " MPH")
             $(".uvIndex").text("UV Index: " + uvIndex)
+            if (uvIndex <= 2) {
+              $(".uvIndex").addClass("bg-success")
+            } 
+            if (uvIndex > 2 && uvIndex <= 5) {
+              $(".uvIndex").addClass("bg-warning")
+            } 
+            if (uvIndex > 5) {
+              $(".uvIndex").addClass("bg-danger")
+            }
           })
     })
 }         
