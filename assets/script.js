@@ -48,8 +48,13 @@ function onSubmit(event) {
             console.log(windspeed)
             console.log(uvIndex)
             console.log(loc)
-            $(".location").text(loc)
             
+            $(".location").text(loc)
+            $(".date").text(moment().format("[(]M[/]D[/]YYYY[)]"))
+            $(".temp").text("Temperature: " + temperature)
+            $(".humidity").text("Humidity: " + humidity)
+            $(".windSpeed").text("Wind Speed: " + windspeed)
+            $(".uvIndex").text("UV Index: " + uvIndex)
           })
     })
   
